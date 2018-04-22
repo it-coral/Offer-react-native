@@ -1,15 +1,9 @@
-/**
- * Author: Moses Adekunle Esan for E&M Digital
- * Date: 2/3/2017
- * Project: React Native Redux Boilerplate
- */
-
-
-
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers/index';
+
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+
 export default createStoreWithMiddleware(reducers)
 
 
