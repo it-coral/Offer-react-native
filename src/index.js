@@ -4,6 +4,7 @@ import { Container, Header, Content, Form, Item, Input, Label, Button, Text, Thu
 import { StyleSheet, Image } from 'react-native';
 import CardDetails from './view/CardDetails';
 import MyOffer from './view/MyOffer';
+import MyCard from './view/MyCard';
 import Signup from './view/Signup';
 import Usercard from './view/Usercard';
 import Signin from './view/Signin';
@@ -55,6 +56,7 @@ export default class Main extends Component {
                 <Scene key="offerlist" hideNavBar={true} component={Usercard} initial />
                 <Scene key="offerdetails" hideNavBar={true} component={CardDetails} />
                 <Scene key="myoffer" hideNavBar={true} component={MyOffer} />
+                <Scene key="mycard" hideNavBar={true} component={MyCard} />
               </Scene>
             </Scene>
           </Scene>
