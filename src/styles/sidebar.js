@@ -1,6 +1,5 @@
-import { Platform } from 'react-native';
-import { StyleSheet } from 'react-native';
-import constvalue from './component_const';
+import { Platform, StyleSheet } from 'react-native';
+import App from './_constants';
 
 module.exports = StyleSheet.create({
 

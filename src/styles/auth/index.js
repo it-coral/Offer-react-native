@@ -1,67 +1,58 @@
-/**
- * Author: Moses Adekunle Esan for E&M Digital
- * Date: 7/27/2017
- * Project: How to Build a React Native/Redux app using a JWT-Powered API.
- */
+import { StyleSheet } from 'react-native';
 
-'use strict';
+module.exports = StyleSheet.create({
 
-var { StyleSheet } = require('react-native');
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    padding: 20
+  },
 
-var styles = StyleSheet.create({
+  welcomeText: {
+    fontWeight: "700",
+    fontSize: 32,
+    marginTop: 5,
+    marginBottom: 100,
+    color: "rgb(10,39,106)",
+    textAlign: "center"
+  },
 
-    container:{
-        flex: 1,
-        justifyContent:"center",
-        padding:20
-    },
+  subText: {
+    fontWeight: "400",
+    fontSize: 15,
+    marginTop: 8,
+    marginBottom: 8,
+    color: "#a4a4a4",
+    textAlign: "center"
+  },
 
-    welcomeText:{
-        fontWeight: "700",
-        fontSize: 32,
-        marginTop: 5,
-        marginBottom: 100,
-        color:"rgb(10,39,106)",
-        textAlign: "center"
-    },
+  btnContainer: {
+    borderRadius: 4,
+    marginTop: 10,
+  },
 
-    subText:{
-        fontWeight: "400",
-        fontSize: 15,
-        marginTop: 8,
-        marginBottom: 8,
-        color:"#a4a4a4",
-        textAlign: "center"
-    },
+  button: {
+    height: 45,
+    backgroundColor: "rgb(83,182,249)",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+  },
 
-    btnContainer:{
-        borderRadius:4,
-        marginTop: 10,
-    },
+  buttonText: {
+    fontFamily: 'Helvetica Neue',
+    fontSize: 15,
+    color: "#fff",
+  },
 
-    button:{
-        height: 45,
-        backgroundColor: "rgb(83,182,249)",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius:4,
-    },
+  bordered: {
+    borderWidth: 1,
+    borderColor: "rgb(83,182,249)",
+    backgroundColor: "#fff",
+  },
 
-    buttonText:{
-        fontFamily: 'Helvetica Neue',
-        fontSize: 15,
-        color: "#fff",
-    },
+  mainColor: {
+    color: "rgb(83,182,249)",
+  }
 
-    bordered:{
-        borderWidth:1,
-        borderColor:"rgb(83,182,249)",
-        backgroundColor: "#fff",
-    },
-
-    mainColor:{
-        color:"rgb(83,182,249)",
-    }
 });
-
-module.exports = styles;
