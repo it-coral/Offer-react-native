@@ -307,6 +307,16 @@ module.exports = StyleSheet.create({
     color: '#FFFFFF',
     lineHeight: 18,
     fontSize: 12,
-  }
+  },
+
+  linearGradient: {
+    marginTop: 9,
+    paddingTop: 7,
+    height: 50,
+    width: 50,
+    paddingLeft: 8,
+    borderRadius: 25,
+    marginLeft: 14,
+  },
 
 });  

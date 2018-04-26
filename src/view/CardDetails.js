@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, TouchableHighlight, FlatList, Dimensions, Modal } from 'react-native';
+import { StyleSheet, Image, TouchableHighlight, FlatList, Dimensions, Modal, Platform } from 'react-native';
 import GridView from "react-native-easy-grid-view";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -12,6 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Actions } from 'react-native-router-flux';
 import Gallery from 'react-native-image-gallery';
 import HeaderBar from '../components/HeaderBar';
+import Feather from 'react-native-vector-icons/Entypo';
 
 const { width, height } = Dimensions.get('window');
 const equalWidth = (width - 116) / 3;
@@ -26,10 +27,11 @@ export default class CardDetails extends Component {
       activeWindow: "0",
       showGallery: false,
       images_array: [
-        { source: { uri: 'https://images.pexels.com/photos/9056/pexels-photo.jpg' } },
-        { source: { uri: 'https://images.pexels.com/photos/9056/pexels-photo.jpg' } },
-        { source: { uri: 'https://images.pexels.com/photos/9056/pexels-photo.jpg' } },
-        { source: { uri: 'https://images.pexels.com/photos/9056/pexels-photo.jpg' } },
+        { source: { uri: 'https://www.photographymad.com/files/images/grass-close-up.jpg' } },
+        { source: { uri: 'https://www.photographymad.com/files/images/grass-close-up.jpg' } },
+        { source: { uri: 'https://www.photographymad.com/files/images/grass-close-up.jpg' } },
+        { source: { uri: 'https://www.photographymad.com/files/images/grass-close-up.jpg' } },
+        { source: { uri: 'https://www.photographymad.com/files/images/grass-close-up.jpg' } }
       ],
       images_index: 0
     }
@@ -66,7 +68,28 @@ export default class CardDetails extends Component {
       <Container style={styles.container}>
         <Grid>
           <Row style={{ height: 74 }}>
-            <HeaderBar />
+            <Content style={styles.header}>
+              <Grid>
+                <Col>
+                  {(Platform.OS === 'ios') ?
+                    <TouchableHighlight onPress={() => { Actions.pop(); }}>
+                      <LinearGradient
+                        start={{ x: 0.0, y: 0.25 }}
+                        end={{ x: 0.5, y: 1.0 }}
+                        locations={[0, 0.6, 1]}
+                        colors={['rgb(1,123,125)', 'rgb(3,55,55)', 'rgb(3,35,35)']}
+                        style={styles.back_button}>
+                        <Feather name='chevron-left' size={35} color="#FFFFFF" />
+                      </LinearGradient>
+                    </TouchableHighlight>
+                    : null}
+                </Col>
+                <Col>
+                  <Image source={logoimage} style={styles.logo} />
+                </Col>
+                <Col></Col>
+              </Grid>
+            </Content>
           </Row>
           <Row>
             <Grid>
@@ -275,13 +298,40 @@ export default class CardDetails extends Component {
         <Modal
           visible={this.state.showGallery}
           onRequestClose={() => this._toggleGallery()}>
-          <View style={{ flex: 1 }} >
-            <Gallery
-              style={{ flex: 1, backgroundColor: 'black' }}
-              images={this.state.images_array}
-            />
-            <Button style={{ position: 'absolute', top: 15, left: 15 }} onPress={this._toggleGallery} ><Text>Close</Text></Button>
-          </View>
+          <Container style={styles.container}>
+            <Grid>
+              <Row style={{ height: 74 }}>
+                <Content style={styles.header}>
+                  <Grid>
+                    <Col>
+                      {(Platform.OS === 'ios') ?
+                        <TouchableHighlight onPress={this._toggleGallery}>
+                          <LinearGradient
+                            start={{ x: 0.0, y: 0.25 }}
+                            end={{ x: 0.5, y: 1.0 }}
+                            locations={[0, 0.6, 1]}
+                            colors={['rgb(1,123,125)', 'rgb(3,55,55)', 'rgb(3,35,35)']}
+                            style={styles.back_button}>
+                            <Feather name='cross' size={35} color="#FFFFFF" />
+                          </LinearGradient>
+                        </TouchableHighlight>
+                        : null}
+                    </Col>
+                    <Col>
+                      <Image source={logoimage} style={styles.logo} />
+                    </Col>
+                    <Col></Col>
+                  </Grid>
+                </Content>
+              </Row>
+              <Row>
+                <Gallery
+                  style={{ flex: 1, backgroundColor: 'black' }}
+                  images={this.state.images_array}
+                />
+              </Row>
+            </Grid>
+          </Container>
         </Modal>
       </Container>
     );
