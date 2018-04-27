@@ -1,85 +1,71 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
 import React, { Component } from 'react';
+
 import { Col, Row, Grid } from "react-native-easy-grid";
-import { Tab, Tabs, TabHeading, Container, Header, Content, Form, Item, Input, Label, Button, Text, Thumbnail, Icon, Right, List, ListItem, Card, CardItem, View } from 'native-base';
-import { StyleSheet, Image, TouchableHighlight, Modal, Platform } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import Signup from './Signup';
+import {Tab, Tabs, TabHeading, Container, Header, Content, Form, Item, Input, Label, Button, Text, Thumbnail, Icon, Right,List, ListItem,Card, CardItem, View } from 'native-base';
+import {
+  StyleSheet, Image,TouchableHighlight,Modal
+} from 'react-native';
 import Usercard from './Usercard';
-import Entypo from 'react-native-vector-icons/Entypo';
-import Foundation from 'react-native-vector-icons/Foundation';
 import logoimage from '../images/logoimage.png';
 import styles from '../styles/myoffer';
 import barcodeimage from '../images/barcode.png';
 import MyOfferList from '../components/MyOfferList';
 import MyOfferReddemList from '../components/MyOfferReddemList';
-import LinearGradient from 'react-native-linear-gradient';
-import Feather from 'react-native-vector-icons/Entypo';
-
-export default class MyOffer extends Component {
-
-  constructor(props) {
+import {Actions} from 'react-native-router-flux';
+export default class MyOffer extends Component<{}> {
+    
+  constructor(props){
     super(props);
     this.state = {
-      isOpen: false,
-      activeWindow: "0",
-      modalVisible: false
-    };
+            isOpen:false,
+            activeWindow:"0",
+            modalVisible: false
+    };    
+    super(props);
   }
-
   componentWillMount() {
     this.setState({ activeWindow: "0" });
     this.setState({ popupWindow: "0" });
-    this.setState({ modalVisible: false });
+    this.setState({modalVisible:false}); 
   }
-
   openModal() {
-    this.setState({ modalVisible: true });
+    this.setState({modalVisible:true});
   }
-
+    
   closeModal() {
-    this.setState({ modalVisible: false });
+    this.setState({modalVisible:false});
   }
-
   render() {
     let myofferall_content = <MyOfferList />;
     let myofferallreddemlist_content = <MyOfferReddemList />;
     return (
-      <Container style={styles.container}>
+      <Container style = {styles.container}>
         <Grid>
-          <Row style={{ height: 74 }}>
+          <Row style = {{ height: 74 }}>
             <Content style={styles.header}>
               <Grid>
                 <Col>
-                { (Platform.OS === 'ios') ?
-                  <TouchableHighlight onPress={() => { Actions.drawerOpen(); }}>
-                    <LinearGradient
-                      start={{ x: 0.0, y: 0.25 }}
-                      end={{ x: 0.5, y: 1.0 }}
-                      locations={[0, 0.6, 1]}
-                      colors={['rgb(1,123,125)', 'rgb(3,55,55)', 'rgb(3,35,35)']}
-                      style={styles.linearGradient}>
-                      <Feather name='menu' size={35} color="#FFFFFF" />
-                    </LinearGradient>
-                  </TouchableHighlight>
-                : null }
+                  <Image source = {logoimage} style = {styles.logo} />
                 </Col>
-                <Col>
-                  <Image source={logoimage} style={styles.logo} />
-                </Col>
-                <Col></Col>
               </Grid>
             </Content>
           </Row>
-          <Row style={{ height: 66 }}>
+          <Row style = {{ height: 66 }}>
             <Grid>
               <Col>
-                <TouchableHighlight underlayColor='rgb(11,148,150)' onPress={() => this.setState({ activeWindow: "0" })} style={this.state.activeWindow == "0" ? styles.controlbutton_left : styles.controlbutton_left_deactivate}>
+                <TouchableHighlight underlayColor = 'rgb(11,148,150)' onPress = {() => this.setState({ activeWindow: "0" })} style={this.state.activeWindow == "0" ? styles.controlbutton_left : styles.controlbutton_left_deactivate}>
                   <Text style={styles.buttontext}>Available</Text>
                 </TouchableHighlight>
               </Col>
               <Col>
-                <TouchableHighlight underlayColor='rgb(11,148,150)' onPress={() => this.setState({ activeWindow: "1" })} style={this.state.activeWindow == "1" ? styles.controlbutton_right : styles.controlbutton_right_deactive}>
-                  <Text style={styles.buttontext}>Redeemed</Text>
+                <TouchableHighlight underlayColor = 'rgb(11,148,150)' onPress = {() => this.setState({ activeWindow: "1" })} style={this.state.activeWindow == "1" ? styles.controlbutton_right : styles.controlbutton_right_deactive}>
+                  <Text style = {styles.buttontext}>Redeemed</Text>
                 </TouchableHighlight>
               </Col>
             </Grid>

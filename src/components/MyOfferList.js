@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import { StyleSheet, FlatList, Text, Image, View, TouchableHighlight, Modal } from "react-native";
 import PropTypes from "prop-types";
@@ -6,15 +7,12 @@ import dumpimage from '../images/dump.jpg';
 import { Actions } from 'react-native-router-flux';
 import barcodeimage from '../images/barcode.png';
 import { connect } from 'react-redux';
-
 class MyOfferList extends Component {
-
   constructor(props) {
     super(props);
+
   }
-
   _keyExtractor = item => item.id;
-
   _renderItem = ({ item }) => {
     return (
       <View style={styles.listview}>
@@ -37,7 +35,6 @@ class MyOfferList extends Component {
       />
     );
   }
-
 }
 
 function mapStateToProps(state, props) {
@@ -45,5 +42,4 @@ function mapStateToProps(state, props) {
     randomoffer: state.OfferReducer
   }
 }
-
 export default connect(mapStateToProps, null)(MyOfferList);
